@@ -5,7 +5,7 @@ using System.Text;
 
 namespace program_design_h.w_2
 {
-    class Recursion
+    class RecursionTasks
     {
         public void TriRev(int numb)
         {
@@ -14,7 +14,7 @@ namespace program_design_h.w_2
             else
             {
                 TriRev(numb - 1);
-                Console.WriteLine(String.Concat(Enumerable.Repeat("*",numb)));
+                Console.WriteLine(String.Concat(Enumerable.Repeat("*", numb)));
             }
         }
 
@@ -31,13 +31,13 @@ namespace program_design_h.w_2
             }
         }
 
-        public bool CheckIfArrInRange(int[] array, int min, int max,int index = 0)
+        public bool CheckIfArrInRange(int[] array, int min, int max, int index = 0)
         {
-            if(index == array.Length -1)
+            if (index == array.Length - 1)
             {
                 return checkIfInRange(array[index]) && checkIfInRange(array[0]);
             }
-            return CheckIfArrInRange(array,min,max,index+1);
+            return CheckIfArrInRange(array, min, max, index + 1);
 
 
 
@@ -162,6 +162,7 @@ namespace program_design_h.w_2
                 return (sortedArr[idx] == num);
             }
         }
+        //---------------------------------------------
 
 
         // recursia with no returns.................
@@ -265,6 +266,37 @@ namespace program_design_h.w_2
 
 
         //page 28...................................
+        public void PrintAllEvenDigits(int num)
+        {
+            if (num % 10 % 2 == 0)
+            {
+                Console.WriteLine(num % 10);
+            }
+            if (num / 10 == 0)
+            {
+                return;
+            }
+            PrintAllEvenDigits(num / 10);
+        }
 
+        public void PrintMapAsTable(int[][] map, int rowIndex = 0, int collumIndex = 0)
+        {
+            if (collumIndex == map.Length)
+            {
+                return;
+            }
+            else if (map[collumIndex].Length - 1 == rowIndex)
+            {
+                Console.WriteLine(map[collumIndex][rowIndex]);
+
+                PrintMapAsTable(map, 0, collumIndex + 1);
+            }
+            else
+            {
+                Console.Write(map[collumIndex][rowIndex] + " ");
+                PrintMapAsTable(map, rowIndex + 1, collumIndex);
+            }
+            
+        }
     }
 }
