@@ -9,6 +9,44 @@ namespace program_design_h.w_2
             RecursionTasks recursion = new RecursionTasks();
             QueueTasks queueTasks = new QueueTasks();
 
+
+            Console.WriteLine(Trouble(0,6));
+
+            //TestTrackingTableQueue();
+            //DisplayAsTable(recursion);
+            //recursion.PrintAllEvenDigits(123456789);
+            //MergeSuperQueues(queueTasks);
+            //ArrangeSHop(queueTasks);
+            //GetMiddleQueue(queueTasks);
+            //GetPairQueue(queueTasks);
+            //ReverseQueue(queueTasks);
+            //MergeSortedQueues(queueTasks, q1, q2);
+            //Jobs(queueTasks, jobs);
+            //Carriers(queueTasks,carriers);
+        }
+        private static double Trouble(double a,double b)
+        {
+            double t1, t2;
+            if (a >= b)
+            {
+                return (a + b) / 2.00;
+            }
+            else
+            {
+                t1 = Trouble(a + 2, b - 1);
+                t2 = Trouble(a + 1, b - 2);
+                Console.WriteLine(t1);
+                Console.WriteLine(t2);
+                Console.WriteLine("a - " + a + " b - "+b);
+            }
+            
+            return Trouble(t1, t2);
+
+
+        }
+
+        private static void TestTrackingTableQueue()
+        {
             MyQueue<MyQueue<int>> que = new MyQueue<MyQueue<int>>();
             MyQueue<int> q1 = new MyQueue<int>();
             q1.Insert(5);
@@ -58,26 +96,7 @@ namespace program_design_h.w_2
                 }
             }
             Console.WriteLine(qNew.ToString());
-
-
-            //DisplayAsTable(recursion);
-            //recursion.PrintAllEvenDigits(123456789);
-            //MergeSuperQueues(queueTasks);
-            //ArrangeSHop(queueTasks);
-            //GetMiddleQueue(queueTasks);
-            //GetPairQueue(queueTasks);
-            //ReverseQueue(queueTasks);
-            //MergeSortedQueues(queueTasks, q1, q2);
-            //Jobs(queueTasks, jobs);
-            //Carriers(queueTasks,carriers);
         }
-
-
-
-
-
-
-
 
         private static void DisplayAsTable(RecursionTasks recursion)
         {
