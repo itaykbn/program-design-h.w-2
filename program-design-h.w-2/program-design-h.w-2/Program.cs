@@ -10,7 +10,7 @@ namespace program_design_h.w_2
             QueueTasks queueTasks = new QueueTasks();
 
 
-            Console.WriteLine(Trouble(0,6));
+            Console.WriteLine(Trouble(2,6));
 
             //TestTrackingTableQueue();
             //DisplayAsTable(recursion);
@@ -35,9 +35,9 @@ namespace program_design_h.w_2
             {
                 t1 = Trouble(a + 2, b - 1);
                 t2 = Trouble(a + 1, b - 2);
-                Console.WriteLine(t1);
-                Console.WriteLine(t2);
-                Console.WriteLine("a - " + a + " b - "+b);
+                //Console.WriteLine(t1);
+                //Console.WriteLine(t2);
+                //Console.WriteLine("a - " + a + " b - "+b);
             }
             
             return Trouble(t1, t2);
