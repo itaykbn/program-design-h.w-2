@@ -1,5 +1,7 @@
 ﻿using System;
+using delete_and_add_chain;
 using Queue;
+using System.Collections.Generic;
 namespace program_design_h.w_2
 {
     class Program
@@ -8,10 +10,29 @@ namespace program_design_h.w_2
         {
             RecursionTasks recursion = new RecursionTasks();
             QueueTasks queueTasks = new QueueTasks();
+            AdditionalTasks additionalTasks = new AdditionalTasks();
 
+            MyQueue<Trip> trips = new MyQueue<Trip>();
+            MyQueue<Family> familyQ1 = new MyQueue<Family>();
+            familyQ1.Insert(new Family("1","shiran", 1));
+            familyQ1.Insert(new Family("1","miki", 2));
+            familyQ1.Insert(new Family("1","lili", 2));
+            familyQ1.Insert(new Family("1","zizi", 6));
+            trips.Insert(new Trip("Tel aviv","1", new DateTime(2020, 3, 5),100, familyQ1));  
 
-            Console.WriteLine(Trouble(2,6));
+            MyQueue<Family> familyQ2 = new MyQueue<Family>();
+            familyQ2.Insert(new Family("2","shiran", 4));
+            familyQ2.Insert(new Family("2","miki", 2));
+            familyQ2.Insert(new Family("2","lili", 3));
+            familyQ2.Insert(new Family("2","zizi", 5));
+            trips.Insert(new Trip("Jerusalem","2", new DateTime(2020, 3, 3),80, familyQ2));
 
+            Console.WriteLine(queueTasks.OperateDriveAndHike(new DateTime(2020, 3, 4), new DateTime(2020, 4, 4), "2",trips));
+
+            //OperateSuperMarket();
+            //GetGreatestCharFromSeperation(additionalTasks);
+            //GetEqualDistancePairs(additionalTasks);
+            //Console.WriteLine(Trouble(2,6));
             //TestTrackingTableQueue();
             //DisplayAsTable(recursion);
             //recursion.PrintAllEvenDigits(123456789);
@@ -20,11 +41,65 @@ namespace program_design_h.w_2
             //GetMiddleQueue(queueTasks);
             //GetPairQueue(queueTasks);
             //ReverseQueue(queueTasks);
-            //MergeSortedQueues(queueTasks, q1, q2);
-            //Jobs(queueTasks, jobs);
-            //Carriers(queueTasks,carriers);
+            //MergeSortedQueues(queueTasks);
+            //Jobs(queueTasks);
+            //Carriers(queueTasks);
         }
-        private static double Trouble(double a,double b)
+
+        private static void OperateSuperMarket()
+        {
+            Supermarket supermarket = new Supermarket();
+            for (int i = 0; i < 100; i++)
+            {
+                supermarket.AddToSuperMarketQueue("itay");
+            }
+            supermarket.ArrangeAClosedLine(1);
+
+
+
+            foreach (var line in supermarket.Lines)
+            {
+                Console.WriteLine(line.Clients);
+            }
+        }
+
+        private static void GetGreatestCharFromSeperation(AdditionalTasks additionalTasks)
+        {
+            MyQueue<char> seperatedQueue = new MyQueue<char>();
+            seperatedQueue.Insert('t');
+            seperatedQueue.Insert('a');
+            seperatedQueue.Insert('x');
+            seperatedQueue.Insert('#');
+            seperatedQueue.Insert('m');
+            seperatedQueue.Insert('#');
+            seperatedQueue.Insert('r');
+            seperatedQueue.Insert('a');
+            seperatedQueue.Insert('b');
+
+
+            Console.WriteLine(additionalTasks.GetGreatestCharFromSeperation(seperatedQueue));
+        }
+
+        private static void GetEqualDistancePairs(AdditionalTasks additionalTasks)
+        {
+            Node<int> list =
+                new Node<int>(1,
+                new Node<int>(2,
+                new Node<int>(3,
+                new Node<int>(5,
+                new Node<int>(6)
+                ))));
+
+            Node<KeyValuePair<int, int>> result = additionalTasks.GetEqualDistancePairs(list);
+
+            while (result != null)
+            {
+                Console.WriteLine($"{result.GetValue().Value} , {result.GetValue().Key}");
+                result = result.GetNext();
+            }
+        }
+
+        private static double Trouble(double a, double b)
         {
             double t1, t2;
             if (a >= b)
@@ -39,7 +114,7 @@ namespace program_design_h.w_2
                 //Console.WriteLine(t2);
                 //Console.WriteLine("a - " + a + " b - "+b);
             }
-            
+
             return Trouble(t1, t2);
 
 

@@ -9,6 +9,10 @@ namespace delete_and_add_chain
         private T value;
         private Node<T> next;
 
+        public Node()
+        {
+            
+        }
         public Node(T value)
         {
             this.value = value;
@@ -46,10 +50,42 @@ namespace delete_and_add_chain
             return (next != null);
         }
 
-        public void Add(T value)
+
+        public override string ToString()
         {
-            Node<T> copy_node = this;
-            SetNext(new Node<T>(value, copy_node.GetNext()));
+            string str = "";
+            Node<T> pos = this;
+            while (pos != null)
+            {
+                str += pos.GetValue();
+                str += " --> ";
+                pos = pos.GetNext();
+            }
+            str += "Null";
+            return str;
+        }
+    }
+
+
+    public static class NodeExtensions
+    {
+
+        public static void Add<T>(this Node<T> node , T value)
+        {
+            Node<T> copy_node = node;
+            node.SetNext(new Node<T>(value, copy_node.GetNext()));
+        }
+
+        public static int Length<T>(this Node<T> node)
+        {
+            Node<T> pos = node;
+            int length = 0;
+            while(pos!= null)
+            {
+                length++;
+                pos = pos.GetNext();
+            }
+            return length;
         }
     }
 }

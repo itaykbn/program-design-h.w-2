@@ -30,7 +30,7 @@ namespace program_design_h.w_2
         public double TotalIncome(string ID)
         {
             Trip trip = GetTrip(ID);
-            MyQueue<Family> temp = null;
+            MyQueue<Family> temp = new MyQueue<Family>();
             double sum = 0;
             while (!trip.Families.IsEmpty())
             {
@@ -70,7 +70,7 @@ namespace program_design_h.w_2
         public double IncomeForPeriodOfTime(DateTime date1, DateTime date2)
         {
             double sum = 0;
-            MyQueue<Trip> tempTrips = null;
+            MyQueue<Trip> tempTrips = new MyQueue<Trip>();
             while (!Trips.IsEmpty())
             {
                 Trip trip = Trips.Remove();
@@ -78,7 +78,7 @@ namespace program_design_h.w_2
 
                 if (trip.Date >= date1 && trip.Date <= date2)
                 {
-                    MyQueue<Family> tempFamilies = null;
+                    MyQueue<Family> tempFamilies = new MyQueue<Family>();
                     while (!trip.Families.IsEmpty())
                     {
                         Family family = trip.Families.Remove();
