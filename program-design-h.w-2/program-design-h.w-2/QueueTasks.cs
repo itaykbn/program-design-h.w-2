@@ -12,7 +12,6 @@ namespace program_design_h.w_2
         //tested
         public void DequeueJobsThatCanBeDone(int time, MyQueue<Job> jobs)
         {
-            MyQueue<Job> unwantedJobs = new MyQueue<Job>();
             while (!jobs.IsEmpty())
             {
                 Job job = jobs.Remove();
