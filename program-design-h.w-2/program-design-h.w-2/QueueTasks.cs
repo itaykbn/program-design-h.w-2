@@ -263,7 +263,7 @@ namespace program_design_h.w_2
         }
 
 
-        //not tested ...
+        //tested
         public string OperateDriveAndHike(DateTime date1, DateTime date2, string tripID, MyQueue<Trip> trips)
         {
             DriveAndHike driveAndHike = new DriveAndHike(trips);
