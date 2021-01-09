@@ -22,6 +22,7 @@ namespace program_design_h.w_2
                 }
                 else
                 {
+                    jobs.Insert(job);
                     break;
                 }
             }
